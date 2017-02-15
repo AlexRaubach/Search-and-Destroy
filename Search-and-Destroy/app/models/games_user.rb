@@ -1,4 +1,6 @@
 class GamesUser < ApplicationRecord
+  belongs_to :user
+  belongs_to :game
 
   before_save :generate_board
 
@@ -35,4 +37,5 @@ class GamesUser < ApplicationRecord
     end
     return true
   end
+
 end
