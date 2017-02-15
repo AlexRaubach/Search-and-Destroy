@@ -2,8 +2,4 @@ class Game < ApplicationRecord
 
 
 
-
-
-
-
 end

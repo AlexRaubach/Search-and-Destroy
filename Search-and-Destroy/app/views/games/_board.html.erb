@@ -1,1 +1,16 @@
 <h1>Hello World!</h1>
+<body>
+  <table>
+    <% @board.each_value do |row| %>
+    <tr>
+      <% row.each do |space| %>
+      <% if space == 0 %>
+      <td class='empty'> EMPTY <td>
+        <% else %>
+        <td class='not-hit-position'> NOT HIT <td>
+          <% end %>
+          <% end %>
+        </tr>
+        <%end %>
+      </table>
+</body>

@@ -1,10 +1,9 @@
 class GamesUser < ApplicationRecord
 
-  # sub_poition looks like "A3 A4 A5"
+  before_save :generate_board
 
-  def new_board
+  def generate_board
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-
     board_hash = {
       "row_A": row_array.dup,
       "row_B": row_array.dup,
@@ -17,6 +16,7 @@ class GamesUser < ApplicationRecord
       "row_I": row_array.dup,
       "row_J": row_array.dup
     }
+    self.board_state = board_hash
   end
 
   def get_all_ship_positions
