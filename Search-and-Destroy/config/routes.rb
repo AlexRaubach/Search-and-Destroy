@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'games/index'
+
+  get 'games/new'
+
+  get 'games/show'
+
   get 'gamelobby/index'
 
   resources :users
