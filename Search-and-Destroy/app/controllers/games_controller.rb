@@ -3,8 +3,18 @@ class GamesController < ApplicationController
   end
 
   def new
+    @game = Game.new
+  end
+
+  def create
   end
 
   def show
   end
+
+  def delete
+  end
+
+  private
+
 end
