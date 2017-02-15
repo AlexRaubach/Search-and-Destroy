@@ -16,6 +16,9 @@ class GamesController < ApplicationController
   def delete
   end
 
+  def place
+  end
+
   private
 
 end
