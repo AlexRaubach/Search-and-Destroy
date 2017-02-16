@@ -4,10 +4,12 @@ class GamesController < ApplicationController
   end
 
   def new
-    @game = Game.new
+    @game = Game.create
+    redirect_to "/games/#{@game.id}/place"
   end
 
   def create
+    @game = Game.create
   end
 
   def join

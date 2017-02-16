@@ -12,15 +12,21 @@
   <h2> Or:</h2>
   <%end%>
 
-<div id="new-user">
-  <%= form_tag("/users", method: "post") do %>
-    <%= text_field_tag 'name', nil, placeholder: "Your Name"  %>
-    <%= submit_tag ("Submit") %>
-  <% end %>
+<div id="start-game">
+  <%= link_to "Start Game", "/games/new", style: "#{'display:none' if session[:user_id] == nil}" %>
 </div>
 
 <br>
 
-<div id="start-game">
-  <%= link_to "Start Game", "/games/new", style: "#{'display:none' if session[:user_id] == nil}" %>
+<p> Create or change your name:</p>
+
+<div id="new-user">
+  <%= form_tag("/users", method: "post") do %>
+    <%= text_field_tag 'name' %>
+    <%= submit_tag ("Submit") %>
+  <% end %>
 </div>
+
+
+
+
