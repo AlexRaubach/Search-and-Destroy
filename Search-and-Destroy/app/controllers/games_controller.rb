@@ -21,10 +21,15 @@ class GamesController < ApplicationController
   def delete
   end
 
+
+  def place
+    @game = Game.find(params[:id])
+  end
+
   def update
     # params[:position_selected]
     # g = Game.find(params[:game_id])
-      # g.fire
+    # g.fire
   end
 
   private

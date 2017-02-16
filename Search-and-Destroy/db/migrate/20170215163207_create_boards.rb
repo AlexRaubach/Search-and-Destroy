@@ -1,6 +1,6 @@
-class CreateGamesUsers < ActiveRecord::Migration[5.0]
+class CreateBoards < ActiveRecord::Migration[5.0]
   def change
-    create_table :games_users do |t|
+    create_table :boards do |t|
       t.integer :user_id
       t.integer :game_id
       t.json :board_state
