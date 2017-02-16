@@ -2,10 +2,10 @@ class Board < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
-  before_save :generate_board
-  validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
+#   before_save :generate_board
+#   validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
-  validate :all_ship_shape
+#   validate :all_ship_shape
 
   def generate_board
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
