@@ -15,23 +15,23 @@ ActiveRecord::Schema.define(version: 20170215163207) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "boards", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "game_id"
+    t.json     "board_state"
+    t.string   "patrol_location",     default: "0,0"
+    t.string   "sub_location",        default: "0,0"
+    t.string   "carrier_location",    default: "0,0"
+    t.string   "battleship_location", default: "0,0"
+    t.string   "destroyer_location",  default: "0,0"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
   create_table "games", force: :cascade do |t|
     t.integer  "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "games_users", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "game_id"
-    t.json     "board_state"
-    t.string   "patrol_location"
-    t.string   "sub_location"
-    t.string   "carrier_location"
-    t.string   "battleship_location"
-    t.string   "destroyer_location"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|
