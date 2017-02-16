@@ -1,4 +1,5 @@
 class BoardsController < ApplicationController
+
    def create
     @game = Game.find(params["id"])
     @board = @game.boards.find_or_initialize_by(user_id: session[:user_id])

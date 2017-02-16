@@ -1,0 +1,11 @@
+<!--
+create form
+capture user coordinates of fire
+
+incontroller update board with coordinates
+-->
+
+<%= form_for(@board, url: {action: 'update'}) do |f|%>
+  <%= f.label 'Fire on coordinates'  %>
+  <%= f.text_field, placeholder: "A0, A1, A2"%>
+<% end %>
