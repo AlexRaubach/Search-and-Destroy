@@ -3,6 +3,7 @@ class Board < ApplicationRecord
   belongs_to :game
 
   before_save :generate_board
+  validate :destroyer_location
 
   def generate_board
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

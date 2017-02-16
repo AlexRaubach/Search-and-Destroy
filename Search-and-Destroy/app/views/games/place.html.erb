@@ -6,23 +6,23 @@
     <input type="hidden" name="id" value="<%=@game.id%>" />
     <div class="form-group">
       <%= f.label :patrol_location %>
-    <div class="col-sm-6"><%= f.text_field :patrol_location, placeholder: "A0, A1, A2"%></div>
+    <div class="col-sm-6"><%= f.text_field :patrol_location, placeholder: "A0, A1"%></div>
     </div>
     <div class="form-group">
       <%= f.label :sub_location %>
-      <div class="col-sm-6"><%= f.text_field :sub_location, placeholder: "A0, A1, A2" %></div>
-    </div>
-    <div class="form-group">
-      <%= f.label :carrier_location %>
-      <div class="col-sm-6"><%= f.text_field :carrier_location, placeholder: "A0, A1, A2, A3, A5" %></div>
-    </div>
-    <div class="form-group">
-      <%= f.label :battleship_location %>
-      <div class="col-sm-6"><%= f.text_field :battleship_location, placeholder: "A0, A1, A2, A3," %></div>
+      <div class="col-sm-6"><%= f.text_field :sub_location, placeholder: "B0, B1, B2" %></div>
     </div>
     <div class="form-group">
       <%= f.label :destroyer_location %>
-      <div class="col-sm-6"><%= f.text_field :destroyer_location, placeholder: "A0, A1" %></div>
+      <div class="col-sm-6"><%= f.text_field :destroyer_location, placeholder: "C0, C1, C2" %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :battleship_location %>
+      <div class="col-sm-6"><%= f.text_field :battleship_location, placeholder: "D0, D1, D2, D3," %></div>
+    </div>
+    <div class="form-group">
+      <%= f.label :carrier_location %>
+      <div class="col-sm-6"><%= f.text_field :carrier_location, placeholder: "E0, E1, E2, E3, E5" %></div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-6"><%= f.submit "place ships" %></div>
