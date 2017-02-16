@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @board = @game.boards.find(session[:user_id])
+    @board = @game.boards.find(2)
   end
 
   def delete
