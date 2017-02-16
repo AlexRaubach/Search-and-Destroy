@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
     @game = Game.find(params["id"])
     @board = @game.boards.find_or_initialize_by(user_id: session[:user_id])
 
-    if @board.save(games_params)
+    if @board.save(board_params)
       redirect_to game_path(@game)
     else
       render 'place'
@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location)
+    params.require(:boards).permit(:patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location)
   end
 
 end
