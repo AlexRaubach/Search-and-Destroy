@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'games#index'
 
-  resources :boards, only: [:update]
+  resources :boards, only: [:new, :update]
   resources :users
   resources :games
 

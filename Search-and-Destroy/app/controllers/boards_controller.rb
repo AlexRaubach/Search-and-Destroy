@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-   def update
+   def new
     @board = Board.where(game_id: params["id"], user_id: sessions[:user_id])
     @game = Game.find(params["id"])
 
