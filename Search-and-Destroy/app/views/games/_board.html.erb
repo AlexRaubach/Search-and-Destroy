@@ -1,38 +1,35 @@
-<h1>Hello World!</h1>
-<body>
-  <table>
-    <thead>
-      <tr>
-        <th> </th>
-        <th>0</th>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
-        <th>7</th>
-        <th>8</th>
-        <th>9</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% i = 65 %>
-      <% @board.board_state.each_value do |row| %>
-      <tr>
-        <td><strong><%= i.chr %></strong> </td>
-        <% i += 1 %>
-        <% row.each do |space| %>
-            <td>[
-            <% if space == 0 %>
-              <%= "_" %>
-            <% else %>
-              <%= "X" %>
-            <% end %>
-            ]</td>
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% i = 65 %>
+    <% @board.board_state.each_value do |row| %>
+    <tr>
+      <td><strong><%= i.chr %></strong> </td>
+      <% i += 1 %>
+      <% row.each do |space| %>
+          <td>[
+          <% if space == 0 %>
+            <%= "_" %>
+          <% else %>
+            <%= "X" %>
           <% end %>
+          ]</td>
         <% end %>
-      </tr>
-    </tbody
-  </table>
-</body>
+      <% end %>
+    </tr>
+  </tbody
+</table>
