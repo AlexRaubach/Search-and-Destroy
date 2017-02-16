@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :games_users, only: [:update]
+  resources :boards, only: [:update]
   resources :users
   resources :games
 
