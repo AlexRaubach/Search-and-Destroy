@@ -3,7 +3,9 @@ class Board < ApplicationRecord
   belongs_to :game
 
   before_save :generate_board
-  validate :destroyer_location
+  validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
+
+  validate :all_ship_shape
 
   def generate_board
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -41,6 +43,16 @@ class Board < ApplicationRecord
 
   # [A0, A1, A2]
 
+  def all_length_check
+    return false if self.patrol_location.split(" ").length != 2
+    return false if self.sub_location.split(" ").length != 3
+    return false if self.destroyer_location.split(" ").length != 3
+    return false if self.battleship_location.split(" ").length != 4
+    return false if self.carrier_location.split(" ").length != 5
+
+    true
+  end
+
   def get_letters(array)
     letters = []
     array.each {|coord| letters << coord[0]}
@@ -76,5 +88,14 @@ class Board < ApplicationRecord
     return true if ship_positions.uniq.length == ship_positions.length
 
     false
+  end
+
+  def all_horizontal_and_vertical
+    (horizontal_check(self.patrol_location) || vertical_check(self.patrol_location)) && (horizontal_check(self.sub_location) || vertical_check(self.sub_location)) && (horizontal_check(self.carrier_location) || vertical_check(self.carrier_location)) && (horizontal_check(self.battleship_location) || vertical_check(self.battleship_location)) && (horizontal_check(self.destroyer_location) || vertical_check(self.destroyer_location))
+  end
+
+
+  def all_ship_shape
+    all_unique && all_length_check && all_horizontal_and_vertical
   end
 end
