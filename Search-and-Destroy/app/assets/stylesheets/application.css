@@ -17,3 +17,19 @@
 .game-page {
   text-align:center;
 }
+
+/*.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+*/
+.table-row table {
+  float: left;
+}
+
+.table-row table:nth-child(2) {
+  float: right;
+}
