@@ -39,4 +39,42 @@ class Board < ApplicationRecord
     return true
   end
 
+  # [A0, A1, A2]
+
+  def get_letters(array)
+    letters = []
+    array.each {|coord| letters << coord[0]}
+    letters.downcase.sort!
+  end
+
+  def get_numbers(array)
+    numbers = []
+    array.each {|coord| letters << coord[1]}
+    numbers.sort!
+  end
+
+  def horizontal_check(string)
+    coordinates = string.split(" ")
+    letters = get_letters(coordinates)
+    return false if letters.uniq.length > 1
+
+    numbers = get_numbers(coordinates)
+    numbers.each_cons(2).all? {|a, b| b == a + 1}
+  end
+
+  def vertical_check(string)
+    coordinates = string.split(" ")
+    numbers = get_numbers(coordinates)
+    return false if numbers.uniq.length > 1
+
+    letters = get_letters(coordinates)
+    letters.each_cons(2).all? {|a, b| b.ord == a.ord + 1}
+  end
+
+  def all_unique
+    ship_positions = get_all_ship_positions
+    return true if ship_positions.uniq.length == ship_positions.length
+
+    false
+  end
 end
