@@ -2,7 +2,7 @@ class Board < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
-#   before_save :generate_board
+  before_save :generate_board
 #   validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
 #   validate :all_ship_shape
