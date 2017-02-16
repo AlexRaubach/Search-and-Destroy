@@ -1,9 +1,9 @@
 class BoardsController < ApplicationController
-   def new
-    @board = Board.where(game_id: params["id"], user_id: sessions[:user_id])
+   def create
     @game = Game.find(params["id"])
+    @board = @game.boards.find_or_initialize_by(user_id: session[:user_id])
 
-    if @board.update(games_params)
+    if @board.save(games_params)
       redirect_to game_path(@game)
     else
       render 'place'
