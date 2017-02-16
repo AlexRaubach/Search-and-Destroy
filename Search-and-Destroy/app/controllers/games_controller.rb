@@ -18,6 +18,8 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @board = @game.boards.first
+    # @my_board = @game.boards.find_by(:user_id, session[:user_id])
+    # @opponent_board = @game.boards.find_by(:user_id != session[:user_id])
   end
 
   def delete
