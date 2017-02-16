@@ -1,8 +1,8 @@
 <h2>Enter your ship positions:</h2>
 <div class="row">
   <div>
-  <%= form_for(:boards, html: { class: "form-horizontal" }) do |f| %>
-    <input type="hidden" name="_method" value="PUT" />
+  <%= form_for(:boards,  url:{:controller=>'boards', :action=>'create'}, html: { class: "form-horizontal" }) do |f| %>
+    <input type="hidden" name="_method" value="POST" />
     <input type="hidden" name="id" value="<%=@game.id%>" />
     <div class="form-group">
       <%= f.label :patrol_location %>
