@@ -1,7 +1,8 @@
 <h1>Hello World!</h1>
 <body>
   <table>
-    <% @board.each_value do |row| %>
+
+    <% @board.board_state.each_value do |row| %>
     <tr>
       <% row.each do |space| %>
       <% if space == 0 %>
