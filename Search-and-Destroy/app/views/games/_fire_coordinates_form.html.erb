@@ -4,14 +4,16 @@ capture user coordinates of fire
 
 incontroller update board with coordinates
 -->
+
 <div id="fireform">
   <%= form_tag(url: {action: 'update', controller: 'Games'}) do%>
   	<input type="hidden" name="_method" value="PUT" />
   	<%= label_tag('attack_coordinates', 'Fire on coordinates')  %> <br>
-  	<%= text_field_tag 'attack_coordinates', "A0"%>
+  	<%= text_field_tag 'attack_coordinates', nil, placeholder: 'A0'%>
   	<%= submit_tag ("Fire") %>
   <% end %>
  </div>
  <div id="waiting" class="hidden">
  	<% render :partial => "games/waiting" %>
  </div>
+
