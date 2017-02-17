@@ -20,9 +20,9 @@
   <div class="table-row">
 
     <div id="boarddiv">
-      <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
+      <%= render partial: "games/board", layout: false, locals: {board: @my_board, my_board: true} %>
     </div>
-    <div><%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %></div id="boarddiv">
+    <div><%= render partial: "games/board", layout: false, locals: {board: @opponent_board, my_board: false} %></div id="boarddiv">
   </div>
 </div>
 
