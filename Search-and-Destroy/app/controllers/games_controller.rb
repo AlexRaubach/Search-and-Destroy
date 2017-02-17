@@ -29,7 +29,7 @@ class GamesController < ApplicationController
         @opponent_board = @game.boards.first
       end
     else
-      #redirect to waiting page
+      redirect_to "/games/#{@game.id}/waiting"
     end
 
   end
@@ -47,6 +47,11 @@ class GamesController < ApplicationController
     # g = Game.find(params[:game_id])
     # g.fire
   end
+
+  def waiting
+    @game = Game.find(params[:id])
+  end
+
 
   private
 
