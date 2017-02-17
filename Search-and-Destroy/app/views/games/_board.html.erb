@@ -21,23 +21,21 @@
       <td><strong><%= i.chr %></strong> </td>
       <% i += 1 %>
       <% row.each do |space| %>
-        <td>
         <% if space == 0 %>
-          <%= '[ _ ]' %>
+          <td class="empty"> <%= '[ _ ]' %> </td>
         <% elsif space == 1 %>
-          <%= "[ X ]" %>
+          <td class=" hit"><%= "[ X ]" %></td>
         <% elsif space == 2 %>
           <% if my_board == true %>
-            <%= "[ O ]" %>
+            <td class="ship"><%= "[ O ]" %></td>
           <% else %>
-            <%= "[ _ ]" %>
+            <td class="empty"><%= "[ _ ]" %> </td>
           <% end %>
         <% elsif space == 3 %>
-          <%= "[ H ]" %>
-          <% end %>
+          <td class="ship hit"> <%= "[ H ]" %></td>
         <% end %>
-        <td>
       <% end %>
+    <% end %>
     </tr>
-  </tbody
-</table>
+    </tbody
+  </table>

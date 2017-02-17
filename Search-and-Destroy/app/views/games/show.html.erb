@@ -28,13 +28,14 @@
   </div>
 
   <div class="table-row">
+    <div>
+      <%= render partial: "games/board", layout: false, locals: {board: @opponent_board, my_board: false} %>
+    </div id="boarddiv">
+
     <div id="boarddiv">
       <%= render partial: "games/board", layout: false, locals: {board: @my_board, my_board: true} %>
     </div>
 
-    <div>
-      <%= render partial: "games/board", layout: false, locals: {board: @opponent_board, my_board: false} %>
-    </div id="boarddiv">
   </div>
 </div>
 
