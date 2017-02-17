@@ -1,0 +1,21 @@
+.miss {
+ background-color: grey;
+ color: black;
+
+}
+
+.empty {
+  border: 2px solid black;
+  background-color: lightblue;
+  color: lightblue;
+}
+
+.ship {
+  background-color: black;
+  color: black;
+}
+
+.hit-ship {
+  background-color: red;
+  color: black;
+}
