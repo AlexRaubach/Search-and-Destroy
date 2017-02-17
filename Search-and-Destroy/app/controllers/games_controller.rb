@@ -44,15 +44,19 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    if @game.boards.first.user_id == session[:user_id]
-        @my_board = @game.boards.first
-        @opponent_board = @game.boards.last
-      else
-        @my_board = @game.boards.last
-        @opponent_board = @game.boards.first
-      end
-    @opponent_board.fire_on(params[:attack_coordinates])
-    @opponent_board.save
+    if @game.current_player_id != session[:user_id]
+      if @game.boards.first.user_id == session[:user_id]
+          @my_board = @game.boards.first
+          @opponent_board = @game.boards.last
+        else
+          @my_board = @game.boards.last
+          @opponent_board = @game.boards.first
+        end
+      @opponent_board.fire_on(params[:attack_coordinates])
+      @opponent_board.save
+      @game.current_player_id = session[:user_id]
+      @game.save
+    end
     redirect_to "/games/#{@game.id}"
   end
 
