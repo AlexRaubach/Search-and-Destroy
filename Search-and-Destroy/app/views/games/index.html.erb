@@ -19,7 +19,7 @@
     <table>
       <% @games.each do |game| %>
         <tr>
-          <% if game.winner_id == nil && game.users.find(session[:user_id]) %>
+          <% if game.winner_id == nil && game.users.exists?(session[:user_id]) %>
           <td><%= link_to "Game #{game.id}", "/games/#{game.id}" %></td>
           <% end %>
         </tr>
