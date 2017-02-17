@@ -16,7 +16,16 @@
 //= require_tree .
 $(document).ready(function() {
 	console.log("Ready!");
+  checkTurn()
+  function ajaxTurn() {
+    $.ajax({
+    url: this.action,
+    type: this.method,
+    data: form_data
+  });
+
+  }
 	function checkTurn() {
-		setInterval(console.log('Test', 1000))
+		setInterval(function() { ajaxTurn(); }, 1000);
 	}
-}); 
+});
