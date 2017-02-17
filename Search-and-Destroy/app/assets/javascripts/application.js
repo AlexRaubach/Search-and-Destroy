@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+$(document).ready(function() {
+	console.log("Ready!");
+	function checkTurn() {
+		setInterval(console.log('Test', 1000))
+	}
+}); 
