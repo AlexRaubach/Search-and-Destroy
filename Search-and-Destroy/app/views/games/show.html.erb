@@ -10,10 +10,19 @@
       <p></p>
     </div>
   </div>
-  <%= render :partial => "games/fire_coordinates_form" %>
+  <div><%= render :partial => "games/fire_coordinates_form" %></div>
+  <div class="row">
+    <div class="col-md-6"><h3>Opponents Board</h3>
+</div>
+    <div class="col-md-6"><h3>Your Board</h3></div>
+  </div>
+
   <div class="table-row">
-    <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
-    <%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %>
+
+    <div id="boarddiv">
+      <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
+    </div>
+    <div><%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %></div id="boarddiv">
   </div>
 </div>
 

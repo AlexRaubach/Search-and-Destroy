@@ -33,3 +33,9 @@
 .table-row table:nth-child(2) {
   float: right;
 }
+
+#boarddiv {
+  margin-left: 150px;
+  margin-right: 150px;
+
+}

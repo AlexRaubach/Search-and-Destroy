@@ -5,7 +5,7 @@
 <%end%>
 
   <% if @games.count != 0%>
-  <h2>Choose an ongoing game:</h2>
+  <h3>Join an ongoing game:</h3>
     <table>
       <% @games.each do |game| %>
         <tr>
@@ -15,11 +15,22 @@
         </tr>
       <% end %>
     </table>
-  <h4> Or: </h4>
+  <h3> Rejoin a game </h3>
+    <table>
+      <% @games.each do |game| %>
+        <tr>
+          <% if game.winner_id == nil && game.users.find(session[:user_id]) %>
+          <td><%= link_to "Game #{game.id}", "/games/#{game.id}" %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+
+    <h3> Or Create a Game </h3>
   <%end%>
 
 <div id="start-game">
-  <%= link_to "Start Game", "/games/new", style: "#{'display:none' if session[:user_id] == nil}" %>
+  <%= link_to "Start", "/games/new", style: "#{'display:none' if session[:user_id] == nil}" %>
 </div>
 
 <br>
