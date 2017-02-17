@@ -4,9 +4,9 @@ class Board < ApplicationRecord
 
   before_create :generate_board
 
-  # validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
+  validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
-  # validate :all_ship_shape
+  validate :all_ship_shape
 
   # def set_ships_locations
   #   ship_positions = self.get_all_ship_positions
@@ -64,12 +64,13 @@ class Board < ApplicationRecord
   def get_letters(array)
     letters = []
     array.each {|coord| letters << coord[0]}
-    letters.downcase.sort!
+    letters.sort!
+    letters.map! { |letter| letter.upcase }
   end
 
   def get_numbers(array)
     numbers = []
-    array.each {|coord| letters << coord[1]}
+    array.each {|coord| numbers << coord[1]}
     numbers.sort!
   end
 
@@ -79,7 +80,7 @@ class Board < ApplicationRecord
     return false if letters.uniq.length > 1
 
     numbers = get_numbers(coordinates)
-    numbers.each_cons(2).all? {|a, b| b == a + 1}
+    numbers.each_cons(2).all? {|a, b| b.to_i == a.to_i + 1}
   end
 
   def vertical_check(string)
@@ -104,7 +105,15 @@ class Board < ApplicationRecord
 
 
   def all_ship_shape
-    all_unique && all_length_check && all_horizontal_and_vertical
+    if !self.all_length_check
+      errors[:base] << "Not enough coordinates"
+    end
+    if !self.all_unique
+      errors[:base] << "The ships cannot be on top of each other."
+    end
+    if !self.all_horizontal_and_vertical
+      errors[:base] << "Your ships are not positioned in a Bristol fashion."
+    end
   end
 
   def fire_on(coordinate) #A0
