@@ -10,11 +10,11 @@
       <p></p>
     </div>
   </div>
-      <div><%= render :partial => "games/fire_coordinates_form" %></div>
+  <div><%= render :partial => "games/fire_coordinates_form" %></div>
   <div class="table-row">
-    <div><%= render :partial => "games/board" %></div>
-
-    <div><%= render :partial => "games/board" %></div>
+    <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
+    <%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %>
   </div>
 </div>
+
 
