@@ -24,7 +24,7 @@
         <% if space == 0 %>
           <td class="empty"> <%= '[ _ ]' %> </td>
         <% elsif space == 1 %>
-          <td class=" hit"><%= "[ X ]" %></td>
+          <td class=" miss"><%= "[ X ]" %></td>
         <% elsif space == 2 %>
           <% if my_board == true %>
             <td class="ship"><%= "[ O ]" %></td>
@@ -32,7 +32,7 @@
             <td class="empty"><%= "[ _ ]" %> </td>
           <% end %>
         <% elsif space == 3 %>
-          <td class="ship hit"> <%= "[ H ]" %></td>
+          <td class="hit-ship"> <%= "[ H ]" %></td>
         <% end %>
       <% end %>
     <% end %>
