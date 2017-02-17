@@ -2,13 +2,14 @@ class Board < ApplicationRecord
   belongs_to :user
   belongs_to :game
 
-  before_save :generate_board
+  before_create :generate_board
 
   # validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
   # validate :all_ship_shape
 
   def generate_board
+    return self.board_state if self.board_state != nil
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     board_hash = {
       "row_A": row_array.dup,
@@ -37,7 +38,7 @@ class Board < ApplicationRecord
   def check_for_game_loss
     positions = self.get_all_ship_positions
     positions.each do |position|
-      return false if self.board_state["row_#{position[0]}"][position[1]] == 0
+      return false if self.board_state["row_#{position[0]}"][position[1].to_i] == 0
     end
     return true
   end
@@ -99,4 +100,10 @@ class Board < ApplicationRecord
   def all_ship_shape
     all_unique && all_length_check && all_horizontal_and_vertical
   end
+
+  def fire_on(coordinate) #A0
+    self.board_state["row_#{coordinate[0]}"][coordinate[1].to_i] = 1
+  end
+
+
 end
