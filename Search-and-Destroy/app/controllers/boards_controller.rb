@@ -3,11 +3,13 @@ class BoardsController < ApplicationController
    def create
     @game = Game.find(params["id"])
     @board = @game.boards.find_or_initialize_by(user_id: session[:user_id])
-
-    if @board.save(board_params)
+    @board.update(board_params)
+    if @board.valid?
+      @board.ship_placement
+      @board.save
       redirect_to game_path(@game)
     else
-      render 'place'
+      render "games/place"
     end
   end
 
