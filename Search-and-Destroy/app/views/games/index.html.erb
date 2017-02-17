@@ -1,15 +1,21 @@
 
 
+<% if session != nil && session[:user_id] != nil %>
+  <h4> Welcome <%= User.find(session[:user_id]).name %> </h4>
+<%end%>
+
   <% if @games.count != 0%>
   <h2>Choose an ongoing game:</h2>
     <table>
       <% @games.each do |game| %>
         <tr>
-          <td><%= link_to "game number #{game.id}", game_path(game) %></td>
+          <% if game.boards.count == 1 %>
+          <td><%= link_to "Game #{game.id}", "/games/#{game.id}/place" %></td>
+          <% end %>
         </tr>
       <% end %>
     </table>
-  <h2> Or:</h2>
+  <h4> Or: </h4>
   <%end%>
 
 <div id="start-game">
