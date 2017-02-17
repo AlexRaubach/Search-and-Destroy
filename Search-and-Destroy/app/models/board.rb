@@ -8,6 +8,12 @@ class Board < ApplicationRecord
 
   # validate :all_ship_shape
 
+  # def set_ships_locations
+  #   ship_positions = self.get_all_ship_positions
+
+
+  # end
+
   def generate_board
     return self.board_state if self.board_state != nil
     row_array = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
