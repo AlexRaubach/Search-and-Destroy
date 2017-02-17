@@ -5,7 +5,7 @@ capture user coordinates of fire
 incontroller update board with coordinates
 -->
 
-<%= form_tag(url: {action: 'update', controller: 'Games'}) do |f|%>
-  <%= f.label 'Fire on coordinates'  %>
-  <%= f.text_field :fire_coordinates, placeholder: "A0, A1, A2"%>
+<%= form_tag(url: {action: 'update', controller: 'Games'}) do%>
+  <%= label_tag('attack_coordinates', 'Fire on coordinates')  %>
+  <%= text_field_tag 'attack_coordinates', "A0 A1 A2"%>
 <% end %>
