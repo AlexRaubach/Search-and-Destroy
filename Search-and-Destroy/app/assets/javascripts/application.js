@@ -15,17 +15,25 @@
 //= require twitter/bootstrap
 //= require_tree .
 $(document).ready(function() {
+  var url = (document.URL + "/status")
+  var url2 = (document.URL + "/update")
 	console.log("Ready!");
   checkTurn()
   function ajaxTurn() {
+    console.log(url)
     $.ajax({
-    url: this.action,
-    type: this.method,
-    data: form_data
-  });
+    url: url,
+    type: "get",
+    dataType : 'html'
+  }).done(function(server_data){
+    console.log(server_data);
+    if (server_data == 202) {
+      location.reload();
+      };
+    })
 
+}
+  function checkTurn() {
+    setInterval(function() { ajaxTurn(); }, 15000);
   }
-	function checkTurn() {
-		setInterval(function() { ajaxTurn(); }, 1000);
-	}
-});
+})

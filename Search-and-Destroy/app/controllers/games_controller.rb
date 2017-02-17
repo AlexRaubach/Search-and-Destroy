@@ -43,13 +43,26 @@ class GamesController < ApplicationController
       @game.current_player_id = session[:user_id]
       @game.save
     end
-    redirect_to "/games/#{@game.id}"
+      redirect_to "/games/#{@game.id}"
   end
 
   def waiting
     @game = Game.find(params[:id])
   end
 
+  def status
+    @game = Game.find(params[:id])
+      #binding.pry
+    if @game.current_player_id == session[:user_id]
+      puts "status 200 player turn"
+      render plain: "200"
+      # format.json  { render :json => @person, :status => :ok }
+    else
+      puts "status 202 not player turn"
+      render plain: "202"
+      #format.json { render :json => msg }
+    end
+  end
 
   private
 

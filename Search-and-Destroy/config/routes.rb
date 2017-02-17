@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   match '/games/:id/waiting', to: 'games#waiting', via: 'get'
 
+  match '/games/:id/status', to: 'games#status', via: 'get'
+
 
 end
