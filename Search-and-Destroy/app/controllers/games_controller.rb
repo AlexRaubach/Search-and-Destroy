@@ -16,10 +16,22 @@ class GamesController < ApplicationController
   end
 
   def show
+    p session[:user_id]
+    p params[:id]
     @game = Game.find(params[:id])
-    @board = @game.boards.first
-    # @my_board = @game.boards.find_by(:user_id, session[:user_id])
-    # @opponent_board = @game.boards.find_by(:user_id != session[:user_id])
+    # @board = @game.boards.first
+    if @game.boards.count >= 2
+      if @game.boards.first.user_id == session[:user_id]
+        @my_board = @game.boards.first
+        @opponent_board = @game.boards.last
+      else
+        @my_board = @game.boards.last
+        @opponent_board = @game.boards.first
+      end
+    else
+      #redirect to waiting page
+    end
+
   end
 
   def delete
