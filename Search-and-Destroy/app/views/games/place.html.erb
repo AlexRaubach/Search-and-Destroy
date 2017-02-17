@@ -1,5 +1,6 @@
 <h2>Enter your ship positions:</h2>
 <div>
+<!-- errors go here -->
   <div class="form">
   <%= form_for(:boards,  url:{:controller=>'boards', :action=>'create'}, html: { class: "form-horizontal" }) do |f| %>
     <input type="hidden" name="_method" value="POST" />
@@ -8,31 +9,31 @@
     <div>
       <%= f.label :patrol_location %>
       <br>
-      <%= f.text_field :patrol_location, placeholder: "A0 A1", value: "#{@board.patrol_location}" %>
+      <%= f.text_field :patrol_location, placeholder: "A0 A1", value: "#{@board.try(:patrol_location)}" %>
     </div>
 
     <div >
       <%= f.label :sub_location %>
       <br>
-      <%= f.text_field :sub_location, placeholder: "B0 B1 B2",value: "#{@board.sub_location}" %>
+      <%= f.text_field :sub_location, placeholder: "B0 B1 B2",value: "#{@board.try(:sub_location)}" %>
     </div>
 
     <div >
       <%= f.label :destroyer_location %>
       <br>
-      <%= f.text_field :destroyer_location, placeholder: "C0 C1 C2", value: "#{@board.destroyer_location}" %>
+      <%= f.text_field :destroyer_location, placeholder: "C0 C1 C2", value: "#{@board.try(:destroyer_location)}" %>
     </div>
 
     <div >
       <%= f.label :battleship_location %>
       <br>
-      <%= f.text_field :battleship_location, placeholder: "D0 D1 D2 D3", value: "#{@board.battleship_location}" %>
+      <%= f.text_field :battleship_location, placeholder: "D0 D1 D2 D3", value: "#{@board.try(:battleship_location)}" %>
     </div>
 
     <div >
       <%= f.label :carrier_location %>
       <br>
-      <%= f.text_field :carrier_location, placeholder: "E0 E1 E2 E3 E5", value: "#{@board.carrier_location}" %>
+      <%= f.text_field :carrier_location, placeholder: "E0 E1 E2 E3 E5", value: "#{@board.try(:carrier_location)}" %>
     </div>
 
     <div>
