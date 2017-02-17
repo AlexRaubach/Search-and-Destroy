@@ -5,6 +5,9 @@ class BoardsController < ApplicationController
     @board = @game.boards.find_or_initialize_by(user_id: session[:user_id])
 
     if @board.save(board_params)
+      @board.ship_placement
+      @board.save
+
       redirect_to game_path(@game)
     else
       render 'place'

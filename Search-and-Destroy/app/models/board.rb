@@ -8,11 +8,16 @@ class Board < ApplicationRecord
 
   # validate :all_ship_shape
 
-  # def set_ships_locations
-  #   ship_positions = self.get_all_ship_positions
+  def ship_placement
+    ship_positions = self.get_all_ship_positions
+
+    ship_positions.each do |coordinate|
+      self.board_state["row_#{coordinate[0]}"][coordinate[1].to_i] = 2
+    end
+  end
 
 
-  # end
+
 
   def generate_board
     return self.board_state if self.board_state != nil
@@ -108,7 +113,9 @@ class Board < ApplicationRecord
   end
 
   def fire_on(coordinate) #A0
-    self.board_state["row_#{coordinate[0]}"][coordinate[1].to_i] = 1
+    if self.board_state["row_#{coordinate[0]}"][coordinate[1].to_i].even?
+      self.board_state["row_#{coordinate[0]}"][coordinate[1].to_i] += 1
+    end
   end
 
 
