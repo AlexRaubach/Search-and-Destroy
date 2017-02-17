@@ -1,19 +1,20 @@
 <h1 class="game-page">Current Game</h1>
 
-<div class="container-fluid game-page">
+<div class="game-page">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">GIF</div>
+  </div>
+  <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <h3>Instructions</h3>
       <p></p>
     </div>
-    <div class="clearfix visible-xs-block"></div>
   </div>
+  <div><%= render :partial => "games/fire_coordinates_form" %></div>
   <div class="table-row">
     <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
     <%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %>
   </div>
-
 </div>
 
- <!-- render :partial => "games/fire_coordinates_form"  -->
+
