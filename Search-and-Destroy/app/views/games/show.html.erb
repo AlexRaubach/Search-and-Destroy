@@ -10,8 +10,8 @@
     <div class="clearfix visible-xs-block"></div>
   </div>
   <div class="table-row">
-    <%= render :partial => "games/board" %>
-    <%= render :partial => "games/board" %>
+    <%= render partial: "games/board", layout: false, locals: {board: @my_board} %>
+    <%= render partial: "games/board", layout: false, locals: {board: @opponent_board} %>
   </div>
 
 </div>
