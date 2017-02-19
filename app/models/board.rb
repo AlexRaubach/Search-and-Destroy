@@ -6,7 +6,7 @@ class Board < ApplicationRecord
 
   validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
-  validate :all_ship_shape
+  # validate :all_ship_shape
 
   def ship_placement
     ship_positions = self.get_all_ship_positions
