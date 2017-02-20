@@ -1,9 +1,3 @@
-
-
-<% if session != nil && session[:user_id] != nil %>
-  <h4> Welcome <%= User.find(session[:user_id]).name %> </h4>
-<%end%>
-
   <% if @games.count != 0%>
   <h3>Join an ongoing game:</h3>
     <table>

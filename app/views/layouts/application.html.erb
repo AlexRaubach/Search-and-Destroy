@@ -3,7 +3,6 @@
   <head>
     <title>SearchAndDestroy</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -11,6 +10,9 @@
   <body>
     <header>
       <h1> Search and Destroy </h1>
+      <% if session != nil && session[:user_id] != nil %>
+        <h4> Hi, <%= User.find(session[:user_id]).name %> </h4>
+      <%end%>
     </header>
 
     <%= yield %>
