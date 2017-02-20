@@ -13,6 +13,13 @@
  *= require_tree .
  *= require_self
  */
+* {
+  border-radius: 6px;
+}
+
+body {
+  background-color: #006699;
+}
 
 .game-page {
   text-align:center;
