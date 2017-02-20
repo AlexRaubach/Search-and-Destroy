@@ -4,9 +4,9 @@ class Board < ApplicationRecord
 
   before_create :generate_board
 
-  validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
+  # validates :patrol_location, :sub_location, :carrier_location, :battleship_location, :destroyer_location, presence: true
 
-  validate :all_ship_shape
+  # validate :all_ship_shape
 
   def ship_placement
     ship_positions = self.get_all_ship_positions
